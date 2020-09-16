@@ -17,16 +17,4 @@ RESTful services for searching Apache Lucene indexes.
 
 4) The build should run successfully and generate a runnable jar in the target folder. This can be run via terminal, or in Spring Tool Suite click Run As "Spring Boot App"
 
-## Using Services
-The services may be accessed via HTTP requests. They return data in JSON format.
-Sample nodejs application for twitter dataset is available [here](https://github.com/amagge/twitter-lucene).
-
-### Lucene query for Index records
-* Type: GET
-* Path: /search?query=<Lucene_Query>&count=<150|all>
-* Lucene Terms: username,text
-* Example Lucene Query: username:jackie AND text:"i am" AND NOT text:RT  
-* Details on Lucene Query syntax can be found [here](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html) and [here](https://lucene.apache.org/core/6_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package.description)
-* Lucene services uses the StandardAnalyzer for its QueryParser
-* Make sure you use the index the fields appropriately
 
