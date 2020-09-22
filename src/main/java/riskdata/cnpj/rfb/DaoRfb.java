@@ -31,15 +31,16 @@ public class DaoRfb {
 
 	public List<Empresa> buscarEmpresaPorRazaoSocial(String nome) {
 		List<Empresa> resultado = new ArrayList<>();
-		String sql = "SELECT cnpj, razao_social FROM empresas WHERE razao_social = ?";
+		String sql = "SELECT cnpj, razao_social FROM empresas WHERE razao_social = ? and matriz_filial = ?";
 
 		try (Connection conexao = getConexao()) {
 			try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
 				stmt.setString(1, nome);
+				stmt.setInt(2, 1);
 				ResultSet rs = stmt.executeQuery();
 
 				while (rs.next()) {
-					resultado.add(new Empresa(rs.getString("cnpj"), rs.getString("razao_social")));
+					resultado.add(new Empresa(rs.getString("razao_social"), rs.getString("cnpj")));
 				}
 
 				return resultado;
