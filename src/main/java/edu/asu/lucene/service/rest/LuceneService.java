@@ -6,11 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
-import riskdata.microservices.IndiceServiceController;
+import riskdata.microservices.BuscaServiceController;
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = {IndiceServiceController.class, LuceneService.class}, basePackages = "riskdata.*")
+@ComponentScan(basePackageClasses = {BuscaServiceController.class, LuceneService.class}, basePackages = "riskdata.*")
 public class LuceneService {
 
     public static void main(String[] args) {
