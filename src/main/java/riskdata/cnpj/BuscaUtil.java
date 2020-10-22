@@ -13,7 +13,7 @@ public class BuscaUtil {
 		descricao = stripAccents(descricao);
 
 		// Remove caracteres especiais
-		descricao = descricao.replace("&", "").replace("/", "").replace("-", "").replace("\"", "");
+		descricao = descricao.replace("&", "").replace("/", "").replace("-", "").replace("\"", "").replace("\\", "");
 		
 		return descricao;
 	}

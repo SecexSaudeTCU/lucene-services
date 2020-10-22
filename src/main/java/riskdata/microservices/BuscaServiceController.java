@@ -48,7 +48,7 @@ public class BuscaServiceController extends BuscaIndiceServiceController {
 				cnpjs.add(empresa.getCnpj());
 			}
 		} else {
-			tipoBusca = buscarNoIndice(razaoSocial, mapEmpresaToCnpjs);
+			tipoBusca = buscarNoIndice(descricao, mapEmpresaToCnpjs);
 		}
 		return new Resultado(mapEmpresaToCnpjs, tipoBusca);
 	}
