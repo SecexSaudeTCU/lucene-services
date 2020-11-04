@@ -26,6 +26,10 @@ public class BuscaIndice {
 
 	public Result buscarPorRazaoSocial(String razaoSocial, boolean buscaExata)
 			throws LuceneSearcherException, InvalidLuceneQueryException {
+		if(razaoSocial.trim().equals("")) {
+			return null;
+		}
+		
 		String query = "razao_social:";
 		if (buscaExata) {
 			query += "\"" + razaoSocial + "\"";

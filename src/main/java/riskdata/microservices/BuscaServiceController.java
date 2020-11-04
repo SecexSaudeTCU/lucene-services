@@ -32,6 +32,11 @@ public class BuscaServiceController extends BuscaIndiceServiceController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public Resultado buscarPorRazaoSocial(@RequestParam(value = "q") String razaoSocial)
 			throws LuceneSearcherException, InvalidLuceneQueryException {
+		
+		if (razaoSocial.trim().equals("")){
+			return new Resultado(new HashMap<>(),"");
+		}
+		
 		Map<String, List<String>> mapEmpresaToCnpjs = new HashMap<>();
 		String descricao = BuscaUtil.processarDescricaoContratado(razaoSocial);
 		List<Empresa> empresas = daoRfb.buscarEmpresaPorRazaoSocial(descricao);

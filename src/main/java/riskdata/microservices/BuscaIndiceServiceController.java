@@ -36,17 +36,20 @@ public class BuscaIndiceServiceController {
 			throws LuceneSearcherException, InvalidLuceneQueryException {
 		String tipoBusca;
 		Result resultadosNoIndice = this.buscaIndice.buscarPorRazaoSocial(razaoSocial, true);
-		List<Map<String, String>> records = resultadosNoIndice.getRecords();
+		if (resultadosNoIndice != null) {
+			List<Map<String, String>> records = resultadosNoIndice.getRecords();
 
-		if (records.size() > 0) {
-			tipoBusca = "BUSCA EXATA ÍNDICE";
-		} else {
-			tipoBusca = "BUSCA APROXIMADA ÍNDICE";
-			resultadosNoIndice = this.buscaIndice.buscarPorRazaoSocial(razaoSocial, false);
-			records = resultadosNoIndice.getRecords();
+			if (records.size() > 0) {
+				tipoBusca = "BUSCA EXATA ÍNDICE";
+			} else {
+				tipoBusca = "BUSCA APROXIMADA ÍNDICE";
+				resultadosNoIndice = this.buscaIndice.buscarPorRazaoSocial(razaoSocial, false);
+				records = resultadosNoIndice.getRecords();
+			}
+			preencher(mapEmpresaToCnpjs, records);
+			return tipoBusca;
 		}
-		preencher(mapEmpresaToCnpjs, records);
-		return tipoBusca;
+		return "";
 	}
 
 	private void preencher(Map<String, List<String>> mapEmpresaToCnpjs, List<Map<String, String>> records) {
