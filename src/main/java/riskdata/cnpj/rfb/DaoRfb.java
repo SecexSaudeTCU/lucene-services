@@ -21,7 +21,11 @@ public class DaoRfb {
 		String url = "jdbc:sqlite:" + arquivoDb;
 		try {			
 			Connection conn = DriverManager.getConnection(url);
-			System.out.println("Connection to SQLite has been established.");
+			System.out.println("Conexão com a base estabelecida.");
+			ResultSet rs = conn.getMetaData().getTables(null, null, null, null);
+		    while (rs.next()) {
+		        System.out.println(rs.getString("TABLE_NAME"));
+		    }
 			return conn;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
